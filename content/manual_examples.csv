@@ -1,0 +1,294 @@
+word,pos,example_sv,example_en
+arton,numeral,Hon fyller arton år imorgon.,She turns eighteen tomorrow.
+elva,numeral,Klockan är elva.,It's eleven o'clock.
+ett,numeral,Jag har bara ett äpple kvar.,I only have one apple left.
+fem,numeral,Vi är fem personer i familjen.,There are five people in our family.
+femte,numeral,Det är hans femte försök.,It's his fifth attempt.
+femtio,numeral,Resan kostar femtio kronor.,The trip costs fifty kronor.
+femton,numeral,Hon är femton år gammal.,She is fifteen years old.
+fjorton,numeral,Vi har semester i fjorton dagar.,We're on vacation for fourteen days.
+fjärde,numeral,Han kom på fjärde plats.,He came in fourth place.
+fyra,numeral,Klockan är fyra.,It's four o'clock.
+fyrtio,numeral,Han är fyrtio år gammal.,He is forty years old.
+hundratusen,numeral,Staden har hundratusen invånare.,The city has a hundred thousand inhabitants.
+miljard,numeral,Jorden har mer än sju miljarder människor.,The Earth has more than seven billion people.
+miljon,numeral,Boken sålde i över en miljon exemplar.,The book sold over a million copies.
+nio,numeral,Klockan är nio på morgonen.,It's nine in the morning.
+nionde,numeral,Det är hans nionde bok.,It's his ninth book.
+nittio,numeral,Min mormor är nittio år gammal.,My grandmother is ninety years old.
+nitton,numeral,Hon fyller nitton nästa vecka.,She turns nineteen next week.
+sex,numeral,Vi ses klockan sex.,See you at six o'clock.
+sextio,numeral,Han fyller sextio i år.,He turns sixty this year.
+sexton,numeral,Hon börjar gymnasiet när hon är sexton.,She starts upper-secondary school when she's sixteen.
+sju,numeral,Klockan är sju.,It's seven o'clock.
+sjunde,numeral,Han kom på sjunde plats i loppet.,He came in seventh place in the race.
+sjuttio,numeral,Resan tar sjuttio minuter.,The trip takes seventy minutes.
+tio,numeral,Klockan är tio.,It's ten o'clock.
+tionde,numeral,Idag är det den tionde maj.,Today is the tenth of May.
+tiotusen,numeral,Mer än tiotusen personer kom till konserten.,More than ten thousand people came to the concert.
+tjugo,numeral,Hon är tjugo år gammal.,She is twenty years old.
+tolv,numeral,Klockan är tolv på natten.,It's twelve at night.
+tre,numeral,Vi har tre barn.,We have three children.
+trettio,numeral,Han fyller trettio nästa månad.,He turns thirty next month.
+tretton,numeral,Hon är tretton år gammal.,She is thirteen years old.
+två,numeral,Jag har två systrar.,I have two sisters.
+åtta,numeral,Klockan är åtta på morgonen.,It's eight in the morning.
+åttio,numeral,Min farfar är åttio år gammal.,My grandfather is eighty years old.
+åttonde,numeral,Han kom på åttonde plats.,He came in eighth place.
+Europa,proper noun,Sverige ligger i Europa.,Sweden is located in Europe.
+Grekland,proper noun,Vi reste till Grekland i somras.,We traveled to Greece last summer.
+Göteborg,proper noun,Göteborg är Sveriges andra största stad.,Gothenburg is Sweden's second largest city.
+Italien,proper noun,Han bor i Italien.,He lives in Italy.
+Kina,proper noun,Kina har flest invånare i världen.,China has the most inhabitants in the world.
+Norge,proper noun,Norge gränsar till Sverige.,Norway borders Sweden.
+Polen,proper noun,Mina föräldrar kommer från Polen.,My parents come from Poland.
+Ryssland,proper noun,Ryssland är världens största land.,Russia is the world's largest country.
+Stockholm,proper noun,Stockholm är Sveriges huvudstad.,Stockholm is Sweden's capital.
+Storbritannien,proper noun,Storbritannien består av flera länder.,Great Britain consists of several countries.
+brunch,noun,Vi ska äta brunch på söndag.,We're having brunch on Sunday.
+decimeter,noun,Bordet är åtta decimeter långt.,The table is eight decimetres long.
+hekto,noun,Kan jag få tre hekto skinka?,Could I have three hectograms of ham?
+inrikesminister,noun,Inrikesministern höll ett tal igår.,The interior minister gave a speech yesterday.
+inrikespolitik,noun,Tidningen skriver mycket om inrikespolitik.,The newspaper writes a lot about domestic policy.
+kvällsmål,noun,Vi äter alltid ett lätt kvällsmål.,We always eat a light evening meal.
+känsel,noun,Han förlorade känseln i handen.,He lost the feeling in his hand.
+mellanmål,noun,Barnen äter ett mellanmål efter skolan.,The children eat a snack after school.
+milligram,noun,Tabletten innehåller femhundra milligram.,The tablet contains five hundred milligrams.
+millimeter,noun,Regnet var bara några millimeter.,The rain was only a few millimetres.
+morbror,noun,Min morbror bor i Malmö.,My (maternal) uncle lives in Malmo.
+månadsskifte,noun,Lönen betalas ut vid månadsskiftet.,The salary is paid at the turn of the month.
+nordost,noun,Vinden kommer från nordost idag.,The wind is coming from the northeast today.
+pingst,noun,Vi firar pingst i maj eller juni.,We celebrate Whitsun in May or June.
+storasyster,noun,Min storasyster hjälper mig med läxorna.,My big sister helps me with my homework.
+syd,noun,Vi körde mot syd hela dagen.,We drove south all day.
+sydväst,noun,Molnen kommer in från sydväst.,The clouds are coming in from the southwest.
+sydöst,noun,Vinden vände mot sydöst.,The wind turned towards the southeast.
+syssling,noun,"Han är min syssling, inte min kusin.","He is my second cousin, not my cousin."
+tia,noun,Kan du växla en tia?,Can you break a ten-krona coin?
+utbildningsminister,noun,Utbildningsministern besökte skolan.,The minister of education visited the school.
+veckodag,noun,Måndag är veckans första veckodag.,Monday is the first day of the week.
+änkeman,noun,Han blev änkeman förra året.,He became a widower last year.
+änkling,noun,Min granne är änkling.,My neighbour is a widower.
+ögonlock,noun,Hon målade sina ögonlock blåa.,She painted her eyelids blue.
+kommentar,noun,Jag skrev en kommentar under artikeln.,I wrote a comment under the article.
+bok,noun,Jag läser en spännande bok.,I'm reading an exciting book.
+blogg,noun,Hon skriver en blogg om resor.,She writes a blog about travel.
+inlägg,noun,Han gjorde ett inlägg på Facebook.,He made a post on Facebook.
+kl.,noun,Mötet börjar kl. nio.,The meeting starts at 9 o'clock.
+december,noun,Det snöar ofta i december.,It often snows in December.
+januari,noun,Januari är årets första månad.,January is the first month of the year.
+film,noun,Vi såg en bra film igår.,We watched a good film yesterday.
+procent,noun,Priset sänktes med tio procent.,The price was reduced by ten percent.
+ätt,noun,Han tillhör en gammal ätt.,He belongs to an old family line.
+familj,noun,Jag älskar min familj.,I love my family.
+kommun,noun,Jag bor i en liten kommun.,I live in a small municipality.
+november,noun,Det blir mörkt tidigt i november.,It gets dark early in November.
+oktober,noun,Skörden sker oftast i oktober.,The harvest usually happens in October.
+februari,noun,Februari är årets kortaste månad.,February is the shortest month of the year.
+ledning,noun,Företagets ledning fattade beslutet.,The company's management made the decision.
+juni,noun,Skolan slutar i juni.,School ends in June.
+maj,noun,Trädgården blommar i maj.,The garden blooms in May.
+politiker,noun,Politikern lovade lägre skatter.,The politician promised lower taxes.
+mars,noun,Våren börjar ofta i mars.,Spring often begins in March.
+ändring,noun,Vi gjorde en liten ändring i planen.,We made a small change to the plan.
+kommission,noun,EU-kommissionen fattar många beslut.,The EU Commission makes many decisions.
+internet,noun,Jag söker information på internet.,I search for information on the internet.
+hov,noun,Hästen skadade sin hov.,The horse injured its hoof.
+augusti,noun,Skolan börjar i augusti.,School starts in August.
+lösning,noun,Vi hittade en bra lösning på problemet.,We found a good solution to the problem.
+juli,noun,Vi har semester i juli.,We're on vacation in July.
+forskning,noun,Han arbetar med medicinsk forskning.,He works in medical research.
+far,noun,Min far jobbar som lärare.,My father works as a teacher.
+miljard,noun,Statens skuld är flera miljarder kronor.,The government's debt is several billion kronor.
+författare,noun,Hon är en känd författare.,She is a well-known author.
+ledare,noun,Han är ledare för partiet.,He is the leader of the party.
+match,noun,Vi såg en spännande match igår.,We watched an exciting match yesterday.
+jude,noun,Hon är jude och firar Chanukka.,She is Jewish and celebrates Hanukkah.
+spelare,noun,Laget har elva spelare.,The team has eleven players.
+individ,noun,Varje individ är unik.,Every individual is unique.
+motion,noun,Motion är bra för hälsan.,Exercise is good for your health.
+dator,noun,Jag skriver på min dator.,I'm writing on my computer.
+ek,noun,Det växer en stor ek i trädgården.,There's a big oak growing in the garden.
+minut,noun,Vänta bara en minut.,Just wait a minute.
+borgare,noun,Borgarna vann valet i kommunen.,The non-Socialists won the election in the municipality.
+nät,noun,Fisken fastnade i nätet.,The fish got caught in the net.
+president,noun,USA:s president håller ett tal.,The US president is giving a speech.
+sök,noun,Skriv ett ord och tryck på Sök.,Type a word and press Search.
+utskott,noun,Riksdagen har flera utskott.,The parliament has several committees.
+muslim,noun,Han är muslim och ber fem gånger om dagen.,He is Muslim and prays five times a day.
+lärare,noun,Min lärare är väldigt snäll.,My teacher is very kind.
+television,noun,Vi såg nyheterna på television.,We watched the news on television.
+pelare,noun,Templet har många höga pelare.,The temple has many tall pillars.
+by,noun,De bor i en liten by på landet.,They live in a small village in the countryside.
+låt,noun,Jag gillar den här låten.,I like this song.
+sekvens,noun,Filmen börjar med en spännande sekvens.,The film begins with an exciting sequence.
+journalist,noun,Hon jobbar som journalist på tidningen.,She works as a journalist at the newspaper.
+bakre,adjective,Han satt på bakre raden.,He sat in the back row.
+intressant,adjective,Det var en intressant bok.,It was an interesting book.
+flest,adjective,Hon fick flest röster i valet.,She got the most votes in the election.
+europeisk,adjective,Sverige är ett europeiskt land.,Sweden is a European country.
+internationell,adjective,Företaget har internationell verksamhet.,The company has international operations.
+nationell,adjective,Det är en nationell helgdag.,It's a national holiday.
+amerikansk,adjective,Han äter amerikansk mat.,He eats American food.
+eget,adjective,Hon har ett eget rum.,She has her own room.
+tysk,adjective,Bilen är av tyskt märke.,The car is of a German brand.
+ytterligare,adjective,Vi behöver ytterligare information.,We need additional information.
+effektiv,adjective,Den nya metoden är mycket effektiv.,The new method is very effective.
+om,subjunction,Jag vet inte om han kommer.,I don't know if he's coming.
+innan,subjunction,Ring mig innan du åker.,Call me before you leave.
+även om,subjunction,Jag går ut även om det regnar.,I'll go out even if it's raining.
+medan,subjunction,Hon läste medan han lagade mat.,She read while he cooked.
+efter att,subjunction,Vi åt efter att filmen slutat.,We ate after the film ended.
+trots att,subjunction,Han sprang trots att han var trött.,He ran despite being tired.
+samtidigt som,subjunction,Hon pratade i telefon samtidigt som hon lagade mat.,She talked on the phone at the same time as she was cooking.
+som att,subjunction,Det känns som att det ska regna.,It feels as if it's going to rain.
+emot,preposition,Han sprang emot vinden.,He ran against the wind.
+när det gäller,preposition,När det gäller pengar är hon försiktig.,"When it comes to money, she is careful."
+ifrån,preposition,Var kommer du ifrån?,Where do you come from?
+igenom,preposition,Vi gick igenom skogen.,We walked through the forest.
+istället för,preposition,Ta trappan istället för hissen.,Take the stairs instead of the elevator.
+i samband med,preposition,Skolan stänger i samband med jul.,The school closes in connection with Christmas.
+ner,particle,"Sätt dig ner, tack.","Sit down, please."
+ned,particle,Solen gick ned bakom bergen.,The sun went down behind the mountains.
+ihop,particle,Vi la ihop pengarna och köpte en present.,We put the money together and bought a present.
+jobba,verb,Jag jobbar på ett sjukhus.,I work at a hospital.
+länka,verb,Kan du länka till artikeln?,Can you link to the article?
+stödja,verb,Vi vill stödja lokala företag.,We want to support local businesses.
+ett,determiner,Kan jag få ett glas vatten?,Can I have a glass of water?
+detta,pronoun,Detta är mitt hus.,This is my house.
+ämna,aux verb,Jag ämnar resa till Spanien i sommar.,I intend to travel to Spain this summer.
+tidigare,adverb,Jag var tidigare lärare.,I was previously a teacher.
+endast,adverb,Biljetten kostar endast hundra kronor.,The ticket costs only a hundred kronor.
+istället,adverb,Ta bussen istället.,Take the bus instead.
+bland annat,adverb,Vi åt bland annat fisk och sallad.,"We ate, among other things, fish and salad."
+till exempel,adverb,"Jag gillar frukt, till exempel äpplen.","I like fruit, for example apples."
+på grund av,adverb,Planet var försenat på grund av vädret.,The plane was delayed because of the weather.
+cirka,adverb,Resan tar cirka två timmar.,The trip takes approximately two hours.
+snabbt,adverb,Han sprang snabbt hem.,He ran home quickly.
+igår,adverb,Igår regnade det hela dagen.,Yesterday it rained all day.
+framför allt,adverb,"Jag gillar frukt, framför allt äpplen.","I like fruit, above all apples."
+inte ens,adverb,Han hälsade inte ens på mig.,He didn't even say hello to me.
+exempelvis,adverb,"Man kan resa dit, exempelvis med tåg.","You can travel there, for example by train."
+till och med,adverb,Till och med barnen förstod skämtet.,Even the children understood the joke.
+klart,adverb,Han pratade klart och tydligt.,He spoke clearly and distinctly.
+förstås,adverb,Han kommer förstås till festen.,"He'll come to the party, of course."
+bättre,adverb,Hon mår bättre idag.,She feels better today.
+högt,adverb,Musiken spelade högt.,The music played loudly.
+så kallad,adverb,Han bor i en så kallad villa.,He lives in a so-called villa.
+givetvis,adverb,Givetvis hjälper jag dig.,Of course I'll help you.
+speciellt,adverb,Jag är inte speciellt trött.,I'm not especially tired.
+tillräckligt,adverb,Vi har inte tillräckligt med tid.,We don't have enough time.
+betydligt,adverb,Det är betydligt kallare idag.,It's considerably colder today.
+måste,aux verb,Jag måste gå nu.,I have to go now.
+det vill säga,adverb,"Han är vegetarian, det vill säga han äter inte kött.","He is a vegetarian, that is to say he doesn't eat meat."
+nia,noun,Jag slog en nia med tärningarna.,I rolled a nine with the dice.
+sexa,noun,Jag slog en sexa med tärningen.,I rolled a six with the die.
+sjua,noun,Bussen sjua stannar utanför huset.,Bus number seven stops outside the house.
+åtta,noun,Hon ritade en åtta i sanden.,She drew a figure eight in the sand.
+dess,pronoun,Staden är känd för dess vackra arkitektur.,The city is known for its beautiful architecture.
+el,noun,Priset på el har ökat i år.,The price of electricity has risen this year.
+politik,noun,Han är inte intresserad av politik.,He is not interested in politics.
+peng,noun,Hon hittade en peng på gatan.,She found a coin on the street.
+krona,noun,En krona är hundra öre.,One krona is a hundred öre.
+i alla fall,adverb,"Jag tror inte på honom, men jag lyssnar i alla fall.","I don't believe him, but I'm listening anyway."
+bildning,noun,God bildning är viktigt i samhället.,Good education is important in society.
+demokrat,noun,Han kallar sig själv demokrat.,He calls himself a democrat.
+studie,noun,Forskarna gjorde en stor studie om sömn.,The researchers did a large study on sleep.
+igen,particle,Kan du säga det igen?,Can you say that again?
+lag,noun,Mitt lag vann matchen.,My team won the match.
+kapa,verb,Terrorister försökte kapa planet.,Terrorists tried to hijack the plane.
+akt,noun,Pjäsen har tre akter.,The play has three acts.
+rätt,noun,Vi åt en god rätt till middag.,We ate a delicious dish for dinner.
+myndighet,noun,Myndigheten fattade ett viktigt beslut.,The authority made an important decision.
+bero,verb,Resultatet beror på vädret.,The result depends on the weather.
+takt,noun,Hon sa det med mycket takt.,She said it with great tact.
+sats,noun,Meningen består av två satser.,The sentence consists of two clauses.
+uppfattning,noun,Jag har en annan uppfattning i frågan.,I have a different opinion on the matter.
+utredning,noun,Regeringen tillsatte en utredning.,The government set up an inquiry.
+rörelse,noun,Han gjorde en snabb rörelse med handen.,He made a quick movement with his hand.
+klass,noun,Jag går i klass nio.,I am in ninth grade.
+inte minst,adverb,"Alla hjälpte till, inte minst barnen.","Everyone helped, not least the children."
+samtlig,adjective,Samtliga elever klarade provet.,All the students passed the test.
+för övrigt,adverb,"Det var, för övrigt, en bra film.","It was, by the way, a good film."
+krona,noun,Kaffet kostar tjugo kronor.,The coffee costs twenty kronor.
+egen,adjective,Hon har sin egen lägenhet.,She has her own apartment.
+mål,noun,Sverige gjorde två mål i matchen.,Sweden scored two goals in the match.
+myndighet,noun,Skatteverket är en svensk myndighet.,The Tax Agency is a Swedish authority.
+må,verb,Hur mår du idag?,How are you feeling today?
+brott,noun,Han begick ett brott.,He committed a crime.
+faktor,noun,Vädret var en viktig faktor.,The weather was an important factor.
+flertal,noun,Flertalet av eleverna klarade provet.,Most of the students passed the test.
+band,noun,Vi startade ett band förra året.,We started a band last year.
+till,preposition,Jag åker till jobbet.,I'm going to work.
+borgare,noun,En borgare i staden betalade skatt.,A citizen in the city paid taxes.
+offer,noun,Hon blev ett offer för bedrägeri.,She became a victim of fraud.
+list,noun,Hon använde list för att vinna spelet.,She used cunning to win the game.
+undersökning,noun,Läkaren gjorde en undersökning.,The doctor did an examination.
+lista,noun,Jag skrev en lista på saker att köpa.,I wrote a list of things to buy.
+sökning,noun,Jag gjorde en sökning på internet.,I did a search on the internet.
+tills,subjunction,Vi väntade tills bussen kom.,We waited until the bus came.
+totalt,adverb,Det kostade totalt hundra kronor.,It cost a hundred kronor in total.
+helg,noun,Vi ska resa bort i helgen.,We're going away this weekend.
+pappa,noun,Min pappa lagar mat varje kväll.,My dad cooks dinner every evening.
+varken ... eller,conjunction,Jag gillar varken kaffe eller te.,I like neither coffee nor tea.
+hemsida,noun,Företaget har en ny hemsida.,The company has a new website.
+läsare,noun,Tidningen har många läsare.,The newspaper has many readers.
+forskare,noun,Forskaren studerade klimatet.,The researcher studied the climate.
+lagstiftning,noun,Ny lagstiftning trädde i kraft.,New legislation came into effect.
+eftermiddag,noun,Vi träffas på eftermiddagen.,We're meeting in the afternoon.
+soldat,noun,Soldaten kom hem från kriget.,The soldier came home from the war.
+fullt,adverb,Det var fullt på bussen.,The bus was full.
+moderat,noun,Hon är moderat.,She is a member of the Moderate party.
+allmänt,adverb,Det är allmänt känt.,It's generally known.
+flicka,noun,Flickan lekte i parken.,The girl played in the park.
+i form av,preposition,Hjälpen kom i form av pengar.,The help came in the form of money.
+i år,adverb,Vi ska resa till Spanien i år.,We're traveling to Spain this year.
+antingen ... eller,conjunction,Du kan välja antingen te eller kaffe.,You can choose either tea or coffee.
+arbetare,noun,Arbetaren byggde huset.,The worker built the house.
+församling,noun,Prästen talade till församlingen.,The priest spoke to the congregation.
+vad gäller,preposition,Vad gäller priset är jag osäker.,As for the price I'm not sure.
+bättra,verb,Han försökte bättra sig.,He tried to better himself.
+tydligt,adverb,Hon förklarade tydligt.,She explained clearly.
+hårt,adverb,Han jobbar hårt.,He works hard.
+engelsk,adjective,Han läser en engelsk bok.,He is reading an English book.
+förmodligen,adverb,Det blir förmodligen regn imorgon.,It will probably rain tomorrow.
+union,noun,Sverige är med i Europeiska unionen.,Sweden is a member of the European Union.
+kommande,adjective,Vi planerar för den kommande sommaren.,We're planning for the coming summer.
+etcetera,adverb,"Vi köpte frukt, grönsaker, etcetera.","We bought fruit, vegetables, etcetera."
+berättelse,noun,Hon skrev en spännande berättelse.,She wrote an exciting story.
+vår,noun,Blommorna blommar på våren.,The flowers bloom in spring.
+foto,noun,Jag tog ett foto av huset.,I took a photo of the house.
+islam,noun,Islam är en av världens religioner.,Islam is one of the world's religions.
+evolution,noun,Darwin skrev om evolution.,Darwin wrote about evolution.
+dotter,noun,Min dotter går i skolan.,My daughter goes to school.
+ersättning,noun,Han fick ersättning för skadan.,He received compensation for the damage.
+självklart,adverb,Självklart hjälper jag dig.,Of course I'll help you.
+dyka,verb,Barnen dyker i poolen.,The children dive in the pool.
+citera,verb,Läraren citerade en bok.,The teacher quoted a book.
+finansiell,adjective,Företaget hade finansiella problem.,The company had financial problems.
+ständigt,adverb,Han klagar ständigt.,He constantly complains.
+judisk,adjective,Hon firar judiska högtider.,She celebrates Jewish holidays.
+tolka,verb,Hon tolkade texten fel.,She interpreted the text incorrectly.
+och så vidare,adverb,"Vi köpte äpplen, päron och så vidare.","We bought apples, pears, and so on."
+enorm,adjective,Det var en enorm skillnad.,It was an enormous difference.
+arbetsgivare,noun,Min arbetsgivare betalar bra lön.,My employer pays a good salary.
+med hjälp av,preposition,Han fixade bilen med hjälp av en vän.,He fixed the car with the help of a friend.
+kull,noun,Katten fick en kull kattungar.,The cat had a litter of kittens.
+invandrare,noun,Många invandrare bor i staden.,Many immigrants live in the city.
+begränsad,adjective,Vi har begränsad tid.,We have limited time.
+ner,adverb,Han gick ner för trappan.,He went down the stairs.
+kategori,noun,Vilken kategori tillhör boken?,Which category does the book belong to?
+fred,noun,Länderna slöt fred.,The countries made peace.
+starkt,adverb,Jag rekommenderar starkt boken.,I strongly recommend the book.
+slutligen,adverb,Slutligen kom vi fram.,Finally we arrived.
+muslimsk,adjective,Familjen firar en muslimsk högtid.,The family celebrates a Muslim holiday.
+England,proper noun,Han bor i England.,He lives in England.
+med tanke på,preposition,Med tanke på vädret stannar vi hemma.,Considering the weather we're staying home.
+i början,preposition,I början var det svårt.,At the beginning it was difficult.
+an,particle,Det går an.,That'll do.
+samman,particle,De höll samman i svåra tider.,They stuck together in hard times.
+ledamot,noun,Hon är ledamot i riksdagen.,She is a member of parliament.
+i enlighet med,preposition,Vi agerade i enlighet med reglerna.,We acted in accordance with the rules.
+fysisk,adjective,Han gör mycket fysisk träning.,He does a lot of physical exercise.
+parlament,noun,Det brittiska parlamentet röstade om lagen.,The British parliament voted on the law.
+reaktion,noun,Hans reaktion var att skratta.,His reaction was to laugh.

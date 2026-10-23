@@ -1,0 +1,3 @@
+# Only third-party dependency the pipeline actually imports -- everything
+# else it uses (csv, re, json, gzip, urllib, xml.etree) is Python stdlib.
+genanki>=0.13.0

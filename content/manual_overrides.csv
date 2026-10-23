@@ -1,0 +1,50 @@
+word,pos,word_override,translation_override,note,clear_example
+vara,verb,,to be,"copula verb; automated picking grabbed the rarer 'to last' sense from a homonym entry"
+om,preposition,,about,"automated picking grabbed the rare/archaic 'round' sense"
+av,preposition,,"of, by",""
+för,preposition,,for,"automated picking grabbed a weak secondary sense"
+till,preposition,,"to, until","missing the dominant 'to' sense"
+Europa,proper noun,,Europe,"wrong sense entirely: matched the Greek-mythology figure, not the continent"
+en,determiner,,"a, an, one","matched an unrelated grammatical stub instead of the indefinite article"
+även om,subjunction,,"even though, even if",""
+efter att,subjunction,,after,""
+trots att,subjunction,,"even though, despite",""
+som att,subjunction,,as if,""
+istället för,preposition,,instead of,""
+i samband med,preposition,,in connection with,""
+vad gäller,preposition,,"regarding, as for",""
+i form av,preposition,,in the form of,""
+med hjälp av,preposition,,with the help of,""
+med tanke på,preposition,,"considering, bearing in mind",""
+i början,preposition,,"in the beginning, at first",""
+i enlighet med,preposition,,in accordance with,""
+varken ... eller,conjunction,,neither ... nor,"Kelly source had a stray control char instead of an ellipsis; fixed in step1"
+antingen ... eller,conjunction,,either ... or,"Kelly source had a stray control char instead of an ellipsis; fixed in step1"
+bok,noun,,book,"automated picking grabbed the rarer 'beech (tree)' homonym sense instead of the common 'book' sense"
+sydväst,noun,,southwest,"Folkets picked the rarer 'sou'wester (rain hat)' sense instead of the common compass-direction sense"
+detta,pronoun,,this,"Kaikki gloss was a raw inflection-form cross-reference ('neuter singular of denna'), not a translation"
+eget,adjective,,own,"Kaikki gloss was a raw inflection-form cross-reference ('indefinite neuter singular of egen'), not a translation"
+betydligt,adverb,,"considerably, significantly","Kaikki gloss was a raw inflection-form cross-reference, not a translation"
+tidigare,adverb,,"earlier, previously","Kaikki gloss was a raw inflection-form cross-reference ('comparative degree of tidigt'), not a translation"
+bättre,adverb,,better,"Kaikki gloss was a raw inflection-form cross-reference ('comparative degree of bra'), not a translation"
+sök,noun,,search,"UI-imperative headword; automated picking surfaced an unhelpful 'imperative of soka' gloss"
+när det gäller,preposition,,"when it comes to, regarding","no translation was ever picked up for this multi-word entry"
+skola,aux verb,ska,"shall, will, be going to","Kelly's own source data notes this modal's infinitive is essentially unused, marking it '(vanligast ska/skall, skulle)' -- the headword a learner should actually see is the present-tense ska, not the archaic infinitive 'skola'; also fixes a mangled gloss that ran a usage note into the translation with no punctuation"
+inte minst,adverb,,not least,"neither Kaikki nor Folkets had this multi-word phrase, no automated translation was ever found"
+samtlig,adjective,,"all, every single","neither Kaikki nor Folkets had a usable sense for this lemma, no automated translation was ever found (commonly seen inflected as 'samtliga')"
+för övrigt,adverb,,"by the way, moreover, incidentally","neither Kaikki nor Folkets had this multi-word phrase, no automated translation was ever found"
+krona,noun,,"krona (the Swedish currency)","Kelly lists two 'krona' entries (kellyID 505 and 1010) with the identical pos/gender pointing at two different SALDO senses -- one is the 'heads' coin-toss idiom, the other a broader entry that also covers the currency; automated picking landed on the coin-toss idiom's 'heads, krona' for BOTH, which also collided on note guid since our pipeline only keys on word/pos/gender. step4 now drops the duplicate row; this override fixes the survivor to the far more useful-for-A1 currency sense",
+egen,adjective,,"own, personal","Kaikki's only listed sense for this lemma is 'peculiar, eccentric, odd, unique, personal, individualistic' -- entirely missing the dead-simple, extremely common core meaning 'own' (min egen bil = my own car)",yes
+mål,noun,,"goal, meal","Kaikki has two homonym entries for 'mål' (both neuter, so gender gave no disambiguation signal); step2's etymology-first heuristic picked etymology 1 ('language/dialect (dated)', 'juridical case') over etymology 2 (target, finish, goal, meal) -- the etymology-1-is-primary assumption doesn't hold here, etym 2 is the far more common A1 sense",yes
+må,verb,,"feel (health), may","Kaikki has two homonym entries for 'må': one with 2 senses ('may', 'must, dated'), one with a single sense ('to feel (good or bad), to be ill or well') -- the richness-based scoring (more senses = picked) favoured the rarer modal over the single but vastly more common 'feel' sense used in the everyday greeting 'hur mår du?'",yes
+brott,noun,,"crime, break/fracture","single Kaikki entry lists 6 senses in this order: break/snap, fracture, CRIME, quarry, breaker (wave), shoal -- step2 always takes the first passing sense, so 'crime' (a very common, useful A1 sense) never got picked despite being right there in the same entry",yes
+faktor,noun,,factor,"single Kaikki entry lists the archaic 'printer/manager of a print shop' sense first, before three modern 'factor' senses (integral part / contributing cause / multiplication operand) in the SAME entry -- step2 took the first sense as usual; 'factor' is also just the plain English cognate",
+flertal,noun,,"majority, most","Folkets has two separate 'flertal' entries (majority/many vs. grammatical plural); Kaikki's own gloss also only said 'plural', so the hint didn't help -- 'majority, most' (flertalet av eleverna = most of the students) is the more commonly useful A1 sense versus the narrower grammar-class term",
+band,noun,,"band (music group), ribbon","single Kaikki entry lists 'band, ribbon, tape, strip of material' as its first sense, with 'band, ensemble, orchestra, group of musicians' second in the SAME entry -- step2 took the first sense, missing the modern/common music-group meaning this word is probably in the A1 list for",yes
+till,preposition,,"to, into, until","Folkets' matched entry's dtrns are ['into','until','to'] in that order but the pipeline only ever joins the first 2 dtrns, cutting off 'to' -- the single most important, most basic sense of this extremely common word",
+borgare,noun,,"citizen, member of the bourgeoisie","Folkets' two entries ('non-Socialist' colloquial-political, 'burgher' historical) are both narrower/more dated than Kaikki's own broader gloss, which is used directly here instead",
+myndighet,noun,,authority,"Folkets' first entry's dtrns are ['majority','authority'] -- genuinely correct but for the narrow legal sense 'myndighetsalder' (age of majority/legal adulthood), not 'the majority of a group'; Folkets' second entry '[public] authority' (as in a government agency, e.g. Migrationsverket) is the practical, common A1 sense and is used alone here to avoid the misleading 'majority'",
+offer,noun,,"sacrifice, victim","single Kaikki entry lists both 'a sacrifice' and 'a victim' as separate senses -- step2 only took the first, missing 'victim' which is at least as commonly needed (crime/accident victim)",
+sexa,noun,,"six, sixth","Folkets' own dtrns are ['sixth','six'] in that order for what's overwhelmingly used as the cardinal digit (en sexa = a six, e.g. dice/grades/bus lines) -- reordered to lead with the actually-common sense",
+sjua,noun,,"seven, seventh","same ordering issue as sexa -- Folkets lists ['seventh','seven'], reordered to lead with the common cardinal sense",
+tia,noun,,"ten, tenth","same ordering issue as sexa -- Folkets lists ['tenth','ten'], reordered to lead with the common cardinal sense",

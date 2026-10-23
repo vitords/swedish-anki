@@ -1,0 +1,77 @@
+# Swedish Anki Deck - Ultimate Edition
+# Git ignore file
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+.venv_v2/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+
+# Raw upstream dumps + scrape caches, fetched locally by tooling/fetch_sources.py
+# (or the pre-existing audio cache -- see CONTRIBUTING.md's "known gap" note).
+# Multi-GB, never meant to be committed; only content/kelly_final.csv +
+# content/manual_*.csv + the subset of audio actually used (content/audio/)
+# are the published dataset.
+data/
+sources/
+discovery/
+
+# Build output -- regenerated from tooling/ + content/, not committed.
+build/
+decks/
+*.apkg
+
+# API keys and secrets
+.env
+secrets.json
+config/local.json
+
+# Backup files
+*.bak
+*.backup
+*_backup.*
