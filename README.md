@@ -74,6 +74,19 @@ gap" note in `CONTRIBUTING.md`. Without it you'll still get a working deck,
 just with less audio coverage until Wikimedia fallback fills some of the
 gap.
 
+## Cutting a release
+
+`content/` already has everything `step4_build_deck.py` needs (curated data +
+audio), so a release build only runs that last step — no fetching or
+re-curation. Pushing a `v*` tag triggers
+`.github/workflows/release.yml`, which builds `decks/Swedish_A1.apkg` and
+attaches it to a new GitHub Release automatically:
+
+```
+git tag v1.0.0
+git push origin v1.0.0
+```
+
 ## License
 
 - Code (`tooling/`, `style/`): MIT — `LICENSE`.
