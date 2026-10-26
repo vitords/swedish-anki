@@ -24,6 +24,7 @@ Output: content/kelly_final.csv, build/needs_review.csv,
         build/audio_to_download.csv
 """
 import csv
+import html
 import os
 import re
 from pathlib import Path
@@ -72,11 +73,39 @@ def _strip_variant_spelling(text):
     return m.group(1).strip() if m else text
 
 
+def _prioritize_cognate(word, dtrns):
+    """Folkets sometimes lists the exact English cognate (e.g. "situation" ->
+    [position, occasion, situation], "till" -> [into, until, to]) behind other
+    candidates -- since only the first 2 dtrns get kept, that obviously-best
+    match can get truncated away. If the headword itself appears among its
+    own dtrns, move it to the front."""
+    word_lower = word.lower()
+    for i, d in enumerate(dtrns):
+        if d.lower() == word_lower and i > 0:
+            return [dtrns[i]] + dtrns[:i] + dtrns[i + 1:]
+    return dtrns
+
+
 def _strip_trailing_paren(text):
     """Drop a trailing editorial clarification like "majority in the Riksdag
     (Parliament)" -- useful in a dictionary entry, out of place as the back
     of a flashcard whose front already names the word being clarified."""
     return re.sub(r"\s*\([^()]*\)\s*$", "", text).strip()
+
+
+def _strip_explanatory_paren(text):
+    """Folkets' idiom/phrase-type examples often embed an editorial gloss of
+    the idiom right inside the example sentence itself -- e.g. ex_orig
+    'fa en andring till stand ("genomfora en andring")' or 'fy sjutton!
+    ("mild svordom")'. Strip any parenthetical that itself contains a quote
+    mark (the signature of an explanation, not real Swedish/English) from
+    anywhere in the string, plus the "(el. X)" alternate-wording marker --
+    but leave other bare parentheticals alone (e.g. "(FN)", "(upp)", "(pa)"),
+    since those are normal dictionary notation for an optional/alternate
+    word, not explanatory clutter."""
+    text = re.sub(r'\s*\([^()]*["“”][^()]*\)', "", text)
+    text = re.sub(r"\s*\(el\.[^()]*\)", "", text)
+    return re.sub(r"\s+", " ", text).strip()
 
 
 def parse_folkets():
@@ -102,8 +131,13 @@ def parse_folkets():
         for ex_type, ex_block in re.findall(r'<ex type="([^"]*)">(.*?)</ex>', a, re.S):
             orig_m = re.search(r"<ex_orig>(.*?)</ex_orig>", ex_block, re.S)
             transl_m = re.search(r"<ex_transl>(.*?)</ex_transl>", ex_block, re.S)
-            orig = _strip_pipe(re.sub(r"<[^>]+>", "", orig_m.group(1))) if orig_m else ""
-            transl = _strip_pipe(re.sub(r"<[^>]+>", "", transl_m.group(1))) if transl_m else ""
+            # Folkets' XML sometimes writes a literal quote character and
+            # sometimes the &quot;/&#39; HTML entity for the same thing --
+            # unescape before anything downstream tries to detect quotes.
+            orig = _strip_pipe(html.unescape(re.sub(r"<[^>]+>", "", orig_m.group(1)))) if orig_m else ""
+            transl = _strip_pipe(html.unescape(re.sub(r"<[^>]+>", "", transl_m.group(1)))) if transl_m else ""
+            orig = _strip_explanatory_paren(orig)
+            transl = _strip_explanatory_paren(transl)
             # Folkets uses "xxxx" as a redacted placeholder for an omitted
             # company/brand/place name (e.g. "anstalld vid xxxx" / "employed
             # at xxxx") -- not a usable example sentence, skip to the next <ex>.
@@ -117,7 +151,7 @@ def parse_folkets():
         index.setdefault(word, []).append(
             {
                 "pos": FOLKETS_POS_MAP.get(gr.group(1), "") if gr else "",
-                "dtrns": [_strip_variant_spelling(_strip_pipe(d)) for d in dtrns if d.strip()],
+                "dtrns": [_strip_variant_spelling(_strip_pipe(html.unescape(d))) for d in dtrns if d.strip()],
                 "example_sv": example_sv,
                 "example_en": example_en,
                 "is_sentence_example": is_sentence_example,
@@ -254,7 +288,8 @@ def main():
             # so a homonym like "val" (en=whale / ett=choice) can't end up
             # with one sense's translation paired against another's example.
             folkets_entry, ambiguous = pick_folkets_entry(folkets_entries, pos, word, kaikki_gloss)
-            folkets_translation = ", ".join(folkets_entry["dtrns"][:2]) if folkets_entry else None
+            folkets_dtrns = _prioritize_cognate(word, folkets_entry["dtrns"]) if folkets_entry else []
+            folkets_translation = ", ".join(folkets_dtrns[:2]) if folkets_dtrns else None
 
             translation = folkets_translation or kaikki_gloss
             translation_source = "folkets" if folkets_translation else ("wiktionary" if kaikki_gloss else "")

@@ -55,6 +55,7 @@ audio { width: 100%; max-width: 260px; margin: 6px auto; }
 .example { font-size: 19px; margin: 10px 0 6px; }
 .example-en { font-size: 14px; color: var(--fg-muted); }
 .example-en.hint { margin-top: 10px; }
+.example.hint { font-size: 15px; color: var(--fg-muted); margin-top: 14px; }
 .example-block { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--border); }
 .example-block .example { font-size: 16px; }
 .cloze-fill { color: var(--accent); font-weight: 700; }

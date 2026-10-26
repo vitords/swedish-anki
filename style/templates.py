@@ -72,6 +72,10 @@ PROD_QFMT = """
 {{#Translation}}
 <div class="card prod-card">
   <div class="translation">{{Translation}}</div>
+  <div class="badges">
+    <span class="badge pos">{{POS}}{{#Gender}} · {{Gender}}{{/Gender}}</span>
+  </div>
+  {{#ExampleSVBlanked}}<div class="example hint">{{ExampleSVBlanked}}</div>{{/ExampleSVBlanked}}
   {{type:Word}}
 </div>
 {{/Translation}}
@@ -83,7 +87,14 @@ PROD_AFMT = """
   {{type:Word}}
   {{Audio}}
   <hr class="divider">
+  <div class="word small">{{WordDisplay}}</div>
   {{#Forms}}<div class="forms">{{Forms}}</div>{{/Forms}}
+  {{#ExampleSVHighlighted}}
+  <div class="example-block">
+    <div class="example">{{ExampleSVHighlighted}}</div>
+    <div class="example-en">{{ExampleEN}}</div>
+  </div>
+  {{/ExampleSVHighlighted}}
 </div>
 """
 
