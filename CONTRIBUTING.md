@@ -24,7 +24,7 @@ The pipeline, run in order:
    Wiktionary dump: gloss, conjugation/declension forms, IPA, audio URL,
    example sentence.
 3. `step3_translations_audio.py` — fill gaps from Folkets Lexikon and
-   resolve audio (Lexin/Bildetema local cache, falling back to Wikimedia).
+   resolve audio (Lexin local cache, falling back to Wikimedia).
 4. `step3b_apply_overrides.py` — apply `content/manual_overrides.csv`
    (hand-verified fixes for words the automated picking got wrong).
 5. `step3c_download_audio.py` — download the small number of Wikimedia
@@ -39,10 +39,9 @@ directory (gitignored — see `ATTRIBUTION.md` for why these aren't committed).
 currently in `content/kelly_final.csv`.
 
 **Known gap**: `fetch_sources.py` only covers the 3 stable bulk downloads
-(Kelly, Kaikki, Folkets). Lexin and Bildetema audio still rely on a
-pre-existing local cache under `data/audio/` that isn't scriptable yet —
-turning that into real, runnable scraping tooling is an open contribution
-opportunity.
+(Kelly, Kaikki, Folkets). Lexin audio still relies on a pre-existing local
+cache under `data/audio/` that isn't scriptable yet — turning that into
+real, runnable scraping tooling is an open contribution opportunity.
 
 If you're fixing a bug in how a word/sense gets picked (translation picked
 from the wrong sense, audio resolved to the wrong word, cloze-blanking

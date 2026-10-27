@@ -6,9 +6,9 @@ and are never committed to this repo -- see ATTRIBUTION.md for why each one
 is here and what license it carries.
 
 This covers the 3 straightforward, stable bulk downloads. It does NOT cover
-Lexin or Bildetema audio scraping, which the pipeline still expects as a
-pre-existing local cache under data/audio/ -- turning that into real,
-runnable tooling is a known gap, tracked in CONTRIBUTING.md.
+Lexin audio scraping, which the pipeline still expects as a pre-existing
+local cache under data/audio/ -- turning that into real, runnable tooling is
+a known gap, tracked in CONTRIBUTING.md.
 
 Usage: python3 tooling/fetch_sources.py
 """

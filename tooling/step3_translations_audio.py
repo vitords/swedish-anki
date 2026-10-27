@@ -15,10 +15,9 @@ field.
 Audio waterfall (all local, no network needed for ~95% of A1):
   1. Lexin local recordings (data/audio/lexin/<word>.mp3) -- professional,
      91.6% direct-lemma hit rate on A1.
-  2. Bildetema local recordings (data/audio/bildetema/<word>.mp3).
-  3. Kaikki/Wikimedia Commons URL (needs downloading -- written to a separate
+  2. Kaikki/Wikimedia Commons URL (needs downloading -- written to a separate
      download list, not fetched here).
-  4. Otherwise: no_audio, left for a later synthetic-TTS pass if still needed.
+  3. Otherwise: no_audio, left for a later synthetic-TTS pass if still needed.
 
 Output: content/kelly_final.csv, build/needs_review.csv,
         build/audio_to_download.csv
@@ -32,7 +31,6 @@ from pathlib import Path
 ENRICHED_CSV = Path("build/kelly_enriched.csv")
 FOLKETS_XDXF = Path("data/sources/folkets_sv_en_public.xdxf")
 LEXIN_AUDIO_DIR = Path("data/audio/lexin")
-BILDETEMA_AUDIO_DIR = Path("data/audio/bildetema")
 WIKIMEDIA_AUDIO_DIR = Path("data/audio/wikimedia_kaikki")
 VERB_POS = {"verb", "aux verb"}
 OUT_FINAL = Path("content/kelly_final.csv")
@@ -250,9 +248,6 @@ def resolve_audio(word):
     lexin_path = LEXIN_AUDIO_DIR / f"{word}.mp3"
     if lexin_path.exists():
         return str(lexin_path), "lexin"
-    bildetema_path = BILDETEMA_AUDIO_DIR / f"{word}.mp3"
-    if bildetema_path.exists():
-        return str(bildetema_path), "bildetema"
     return "", ""
 
 
@@ -324,7 +319,7 @@ def main():
                 # the infinitive our Word field shows -- confirmed against
                 # Lexin's own page markup, not a scraping bug. Kaikki's
                 # audio_url is reliably the infinitive, so prefer it for
-                # verbs even when local Lexin/Bildetema audio also exists.
+                # verbs even when local Lexin audio also exists.
                 wikimedia_path = WIKIMEDIA_AUDIO_DIR / f"{word}.mp3"
                 if wikimedia_path.exists():
                     audio_path, audio_source = str(wikimedia_path), "wikimedia"

@@ -68,7 +68,7 @@ python3 tooling/step3e_apply_examples.py
 python3 tooling/step4_build_deck.py A1
 ```
 
-Audio resolution also depends on a pre-existing local Lexin/Bildetema cache
+Audio resolution also depends on a pre-existing local Lexin cache
 under `data/audio/` that isn't fetchable by a script yet — see the "Known
 gap" note in `CONTRIBUTING.md`. Without it you'll still get a working deck,
 just with less audio coverage until Wikimedia fallback fills some of the

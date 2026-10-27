@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Step 3c: Download the small number of Wikimedia Commons audio files (via Kaikki
-URLs) needed to fill audio gaps not covered by the local Lexin/Bildetema
-recordings, for a given CEFR level (default A1). Public CC-licensed audio,
+URLs) needed to fill audio gaps not covered by the local Lexin recordings,
+for a given CEFR level (default A1). Public CC-licensed audio,
 already identified per-word in build/audio_to_download.csv.
 
 Downloaded files go to data/audio/wikimedia_kaikki/<word>.mp3 and

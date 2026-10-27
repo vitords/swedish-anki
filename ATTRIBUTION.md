@@ -31,11 +31,6 @@ Proceedings of LREC 2022, pp. 1317–1325.
 
 ### Sources considered and NOT used in the shipped content
 
-- **Bildetema** (Oslo Metropolitan University / NAFO) — its own site states "All
-  Rights Reserved," and its images are separately licensed under Adobe Stock's
-  standard terms. It was evaluated as a possible audio fallback but never
-  actually ends up used for the A1 level (0 of 1,331 files), so it's excluded
-  from the shipped dataset entirely.
 - **SVALex** (Språkbanken) — licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
   (non-commercial). Used only internally during development as a secondary
   frequency cross-check; never shown on any card and deliberately excluded
