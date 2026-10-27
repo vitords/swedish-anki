@@ -30,6 +30,7 @@ from style.templates import FIELDS, TEMPLATES, CSS  # noqa: E402
 FINAL_CSV = Path("content/kelly_final.csv")
 DECKS_DIR = Path("decks")
 MEDIA_STAGING_DIR = Path("build/media")
+PUBLISHED_AUDIO_DIR = Path("content/audio")
 
 # Stable IDs so re-generating/re-importing a level updates existing notes/deck
 # rather than creating duplicates. One offset per CEFR level.
@@ -166,21 +167,33 @@ def main():
     cloze_count = 0
     for row in rows:
         audio_field = ""
-        if row["audio_path"] and os.path.exists(row["audio_path"]):
-            # Stage into a word+pos+rank-qualified basename rather than reusing
-            # the source file's own name -- several homonyms share a bare
-            # source filename (e.g. "vara" the verb vs. "vara" the noun both
-            # resolve to a source file literally named vara.mp3, from two
-            # different audio directories). genanki's media_files are flattened
-            # into one folder by basename, so two different notes both
-            # referencing "vara.mp3" would collide and one would silently play
-            # the other's audio. kelly_rank is unique per row, guaranteeing no
-            # collision regardless of word/pos/gender overlap.
-            ext = Path(row["audio_path"]).suffix
-            staged_name = f"{row['word']}_{row['pos'].replace(' ', '_')}_{row['kelly_rank']}{ext}"
+        # Stage into a word+pos+rank-qualified basename rather than reusing
+        # the source file's own name -- several homonyms share a bare source
+        # filename (e.g. "vara" the verb vs. "vara" the noun both resolve to
+        # a source file literally named vara.mp3, from two different audio
+        # directories). genanki's media_files are flattened into one folder
+        # by basename, so two different notes both referencing "vara.mp3"
+        # would collide and one would silently play the other's audio.
+        # kelly_rank is unique per row, guaranteeing no collision regardless
+        # of word/pos/gender overlap.
+        ext = Path(row["audio_path"]).suffix if row["audio_path"] else ".mp3"
+        staged_name = f"{row['word']}_{row['pos'].replace(' ', '_')}_{row['kelly_rank']}{ext}"
+        # Prefer the already-published, git-tracked copy under content/audio/
+        # over the raw audio_path column -- that column points at the
+        # maintainer's local, gitignored scrape cache (data/audio/...), which
+        # doesn't exist on a fresh checkout (e.g. CI). content/audio/ is the
+        # actual source of truth for what ships; audio_path is only a resolver
+        # hint for words not staged there yet.
+        published_path = PUBLISHED_AUDIO_DIR / staged_name
+        source_path = None
+        if published_path.exists():
+            source_path = published_path
+        elif row["audio_path"] and os.path.exists(row["audio_path"]):
+            source_path = Path(row["audio_path"])
+        if source_path:
             staged_path = MEDIA_STAGING_DIR / staged_name
             if not staged_path.exists():
-                shutil.copy(row["audio_path"], staged_path)
+                shutil.copy(source_path, staged_path)
             audio_field = f"[sound:{staged_name}]"
             media_files.append(str(staged_path))
 
