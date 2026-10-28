@@ -1,5 +1,7 @@
 # Swedish vocabulary Anki deck
 
+[![Download the deck](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_Download_the_deck-.apkg-2563eb?style=for-the-badge)](https://github.com/vitords/swedish-anki/releases/latest/download/Swedish_A1.apkg)
+
 A Swedish vocabulary Anki deck built from curated, openly-licensed
 dictionary and corpus sources, not scraped translations dumped onto a
 template, but a pipeline that actually picks the right sense of each word,
@@ -8,8 +10,9 @@ mobile-friendly Anki cards.
 
 ## Get the deck
 
-Pre-built `.apkg` files are attached to each
-[release](../../releases). Download one and import it in Anki (desktop or
+The button above always points at the `.apkg` from the
+[latest release](../../releases/latest), so it never goes stale as new
+releases come out. Download it and import it in Anki (desktop or
 AnkiMobile) the normal way.
 
 Currently shipped: **Swedish A1** (the 1,404 most frequent words per the
