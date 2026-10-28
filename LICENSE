@@ -23,6 +23,6 @@ SOFTWARE.
 ---
 
 This license covers the code under `tooling/` and `style/` only. The curated
-dataset under `content/` is licensed separately — see LICENSE-CONTENT.md.
-Third-party source material this project draws on carries its own license —
+dataset under `content/` is licensed separately: see LICENSE-CONTENT.md.
+Third-party source material this project draws on carries its own license:
 see ATTRIBUTION.md.

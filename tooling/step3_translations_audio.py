@@ -6,16 +6,16 @@ dictionary, not Wiktionary prose) and resolve the audio source for each word.
 Why Folkets as the primary translation: spot checks showed Kaikki/Wiktionary
 glosses are sometimes a jumbled list of loosely-related synonyms for a single
 sense (e.g. "egen" -> "peculiar, eccentric, odd, unique, personal,
-individualistic" -- none of which is the actual common meaning "own"), because
+individualistic", none of which is the actual common meaning "own"), because
 English Wiktionary glosses are descriptive, not translations. Folkets Lexikon
 is a real Swedish->English bilingual dictionary and gives clean short
 translations ("egen" -> "own"). We keep Kaikki's gloss as a fallback/secondary
 field.
 
 Audio waterfall (all local, no network needed for ~95% of A1):
-  1. Lexin local recordings (data/audio/lexin/<word>.mp3) -- professional,
+  1. Lexin local recordings (data/audio/lexin/<word>.mp3): professional,
      91.6% direct-lemma hit rate on A1.
-  2. Kaikki/Wikimedia Commons URL (needs downloading -- written to a separate
+  2. Kaikki/Wikimedia Commons URL (needs downloading, written to a separate
      download list, not fetched here).
   3. Otherwise: no_audio, left for a later synthetic-TTS pass if still needed.
 
@@ -61,7 +61,7 @@ def _is_real_sentence(text):
 
 def _strip_variant_spelling(text):
     """Folkets tags US-English spelling variants inline, e.g. "share, (stock
-    [US])" or standalone "(corporation [US])" -- drop the annotation when
+    [US])" or standalone "(corporation [US])". Drop the annotation when
     something else remains, otherwise unwrap it to the bare word so we don't
     end up with an empty translation."""
     stripped = re.sub(r",?\s*\([^()]*\[(?:US|UK|Br\.|Am\.)\][^()]*\)", "", text).strip().strip(",").strip()
@@ -74,7 +74,7 @@ def _strip_variant_spelling(text):
 def _prioritize_cognate(word, dtrns):
     """Folkets sometimes lists the exact English cognate (e.g. "situation" ->
     [position, occasion, situation], "till" -> [into, until, to]) behind other
-    candidates -- since only the first 2 dtrns get kept, that obviously-best
+    candidates. Since only the first 2 dtrns get kept, that obviously-best
     match can get truncated away. If the headword itself appears among its
     own dtrns, move it to the front."""
     word_lower = word.lower()
@@ -86,18 +86,18 @@ def _prioritize_cognate(word, dtrns):
 
 def _strip_trailing_paren(text):
     """Drop a trailing editorial clarification like "majority in the Riksdag
-    (Parliament)" -- useful in a dictionary entry, out of place as the back
+    (Parliament)": useful in a dictionary entry, out of place as the back
     of a flashcard whose front already names the word being clarified."""
     return re.sub(r"\s*\([^()]*\)\s*$", "", text).strip()
 
 
 def _strip_explanatory_paren(text):
     """Folkets' idiom/phrase-type examples often embed an editorial gloss of
-    the idiom right inside the example sentence itself -- e.g. ex_orig
+    the idiom right inside the example sentence itself, e.g. ex_orig
     'fa en andring till stand ("genomfora en andring")' or 'fy sjutton!
     ("mild svordom")'. Strip any parenthetical that itself contains a quote
     mark (the signature of an explanation, not real Swedish/English) from
-    anywhere in the string, plus the "(el. X)" alternate-wording marker --
+    anywhere in the string, plus the "(el. X)" alternate-wording marker,
     but leave other bare parentheticals alone (e.g. "(FN)", "(upp)", "(pa)"),
     since those are normal dictionary notation for an optional/alternate
     word, not explanatory clutter."""
@@ -118,8 +118,8 @@ def parse_folkets():
         gr = re.search(r"<gr>(.*?)</gr>", a)
         dtrns = re.findall(r"<dtrn>(.*?)</dtrn>", a)
 
-        # Pair ex_orig/ex_transl from within the SAME <ex>...</ex> block --
-        # an article can have several <ex> entries (a real sentence with no
+        # Pair ex_orig/ex_transl from within the SAME <ex>...</ex> block.
+        # An article can have several <ex> entries (a real sentence with no
         # translation, then unrelated compound/idiom examples that DO have
         # one), and grabbing each tag independently via a plain top-level
         # search pairs the wrong two together (e.g. "is"'s real example
@@ -130,7 +130,7 @@ def parse_folkets():
             orig_m = re.search(r"<ex_orig>(.*?)</ex_orig>", ex_block, re.S)
             transl_m = re.search(r"<ex_transl>(.*?)</ex_transl>", ex_block, re.S)
             # Folkets' XML sometimes writes a literal quote character and
-            # sometimes the &quot;/&#39; HTML entity for the same thing --
+            # sometimes the &quot;/&#39; HTML entity for the same thing, so
             # unescape before anything downstream tries to detect quotes.
             orig = _strip_pipe(html.unescape(re.sub(r"<[^>]+>", "", orig_m.group(1)))) if orig_m else ""
             transl = _strip_pipe(html.unescape(re.sub(r"<[^>]+>", "", transl_m.group(1)))) if transl_m else ""
@@ -138,7 +138,7 @@ def parse_folkets():
             transl = _strip_explanatory_paren(transl)
             # Folkets uses "xxxx" as a redacted placeholder for an omitted
             # company/brand/place name (e.g. "anstalld vid xxxx" / "employed
-            # at xxxx") -- not a usable example sentence, skip to the next <ex>.
+            # at xxxx"), not a usable example sentence, skip to the next <ex>.
             if "xxxx" in orig.lower() or "xxxx" in transl.lower():
                 continue
             if _is_real_sentence(orig) and transl:
@@ -160,20 +160,20 @@ def parse_folkets():
 
 def pick_folkets_entry(entries, pos, word, hint_gloss=""):
     """Pick ONE Folkets entry for (word, pos) and use it for BOTH translation
-    and example -- Folkets carries no gender/sense marker of its own, so a
+    and example. Folkets carries no gender/sense marker of its own, so a
     homonym like "val" (whale, en) vs "val" (choice/election, ett) exists as
     several separate <ar> blocks under the identical spelling+pos, and
     picking translation/example independently (each just "first match") can
     pair a translation from one sense with an example from another. Kaikki's
     gloss is already gender-disambiguated (see step2's pick_entry), so use it
     as a hint: prefer the Folkets entry whose own dtrns share a (non-trivial)
-    word with it -- excluding the headword itself, since several senses'
+    word with it, excluding the headword itself, since several senses'
     dtrns can be the bare word again (e.g. "bank" -> dtrn "bank" for THREE
     different senses: cloud bank, storage bank, financial bank), which would
     otherwise "match" the hint by pure coincidence regardless of sense.
     When no sense-entry can be told apart that way, fall back to preferring
-    one with a real illustrative sentence over a bare compound/idiom cross-
-    reference -- dictionaries reserve full example sentences for a word's
+    one with a real illustrative sentence over a bare compound/idiom cross
+    reference: dictionaries reserve full example sentences for a word's
     primary, most relevant sense more often than not. Returns
     (entry_or_None, ambiguous)."""
     matching = [e for e in entries if e["pos"] == pos and e["dtrns"]]
@@ -193,18 +193,18 @@ def pick_folkets_entry(entries, pos, word, hint_gloss=""):
             overlap = hint_words & entry_words
             if overlap:
                 scored.append((len(overlap), e))
-        # Any hint-word overlap beats none -- even when several senses share
-        # A word with the hint (e.g. "riva" = scratch/tear/demolish; Kaikki's
+        # Any hint-word overlap beats none, even when several senses share
+        # a word with the hint (e.g. "riva" = scratch/tear/demolish; Kaikki's
         # gloss "to tear, to rip" matches BOTH the "tear, grate" and the
-        # "pull (tear) down, demolish" entries), the ones that share a real
+        # "pull (tear) down, demolish" entries): the ones that share a real
         # signal with an independently-picked, correct-sense gloss are still
         # far more likely to be right than falling through to matching[0]
         # (Folkets' plain first entry, which can be a completely unrelated
-        # sense, e.g. "scratch" -- previously happened here since only an
+        # sense, e.g. "scratch"; previously happened here since only an
         # EXACT single match was ever trusted). Among several that share a
         # word, prefer the STRONGEST overlap (e.g. "aning": hint "a
         # suspicion, an idea, a notion" shares only "suspicion" with one
-        # entry but "suspicion, idea, notion" -- 3 words -- with another;
+        # entry but "suspicion, idea, notion", 3 words, with another;
         # the 3-word match is obviously the better signal), falling back to
         # Folkets' own document order only to break a tie.
         if scored:
@@ -236,7 +236,7 @@ def clean_wiktionary_gloss(gloss):
 
 
 # Confirmed (by fetching the live Lexin page) to carry audio for a
-# DIFFERENT headword entirely, not just a different form of the same word --
+# DIFFERENT headword entirely, not just a different form of the same word:
 # "ett" 's search results only bold "en (2)"/"en (4)", so the cached
 # local file is the indefinite article "en", not "ett".
 WORDS_WITH_WRONG_LEXIN_AUDIO = {"ett"}
@@ -259,7 +259,7 @@ def main():
     download_rows = []
     # svalex_total_freq is intentionally NOT carried into this final file: it's
     # Spraakbanken's SVALex frequency data, licensed CC BY-NC-SA (non-commercial),
-    # and nothing downstream (sorting, picking, card content) actually reads it --
+    # and nothing downstream (sorting, picking, card content) actually reads it;
     # kelly_rank is the real ordering signal. Dropping it here keeps this published
     # file cleanly under the dataset's CC BY-SA 4.0 license with no NC encumbrance.
     final_fields = [
@@ -295,7 +295,7 @@ def main():
             # if Kaikki already had one: Folkets pairs a gloss with its own
             # example from the same dictionary entry (guaranteed same sense),
             # while Kaikki's example comes from Kaikki's own (different)
-            # sense-ranking -- for a polysemous word those can disagree (e.g.
+            # sense-ranking. For a polysemous word those can disagree (e.g.
             # "slag" translation "category, type" paired with a Kaikki
             # example about the Battle of Lutzen). Only fall back to Kaikki's
             # example, then to any Folkets example regardless of pos match,
@@ -316,7 +316,7 @@ def main():
             if pos in VERB_POS and row["audio_url"]:
                 # Lexin's citation audio for Swedish verbs is the PRESENT
                 # TENSE form ("kraver" for "krava", "talar" for "tala"), not
-                # the infinitive our Word field shows -- confirmed against
+                # the infinitive our Word field shows. Confirmed against
                 # Lexin's own page markup, not a scraping bug. Kaikki's
                 # audio_url is reliably the infinitive, so prefer it for
                 # verbs even when local Lexin audio also exists.
@@ -345,7 +345,7 @@ def main():
                 review_reasons.append("no_example")
 
             # Keep the original Commons URL whenever we actually used Wikimedia
-            # audio -- CC BY-SA requires per-file attribution (uploader/
+            # audio: CC BY-SA requires per-file attribution (uploader/
             # license), and that can only be looked up from the source URL,
             # not reconstructed later from a bare local filename.
             audio_credit_url = row["audio_url"] if audio_source == "wikimedia" else ""

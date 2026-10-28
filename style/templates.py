@@ -1,6 +1,6 @@
 """
 Card look: field schema, Anki note templates (mustache), and CSS. No data or
-build logic lives here -- a PR that only wants to change how a card looks
+build logic lives here, so a PR that only wants to change how a card looks
 (colors, layout, which fields appear where) should never need to touch
 anything under tooling/.
 

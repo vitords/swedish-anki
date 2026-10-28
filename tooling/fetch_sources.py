@@ -2,12 +2,12 @@
 """
 Fetch the raw upstream dumps the pipeline needs, into a local, gitignored
 `sources/` directory. These are large (hundreds of MB to a few GB combined)
-and are never committed to this repo -- see ATTRIBUTION.md for why each one
+and are never committed to this repo. See ATTRIBUTION.md for why each one
 is here and what license it carries.
 
 This covers the 3 straightforward, stable bulk downloads. It does NOT cover
 Lexin audio scraping, which the pipeline still expects as a pre-existing
-local cache under data/audio/ -- turning that into real, runnable tooling is
+local cache under data/audio/. Turning that into real, runnable tooling is
 a known gap, tracked in CONTRIBUTING.md.
 
 Usage: python3 tooling/fetch_sources.py
@@ -20,9 +20,9 @@ from pathlib import Path
 SOURCES_DIR = Path("sources")
 HEADERS = {"User-Agent": "SwedishAnkiDeckBuilder/1.0 (personal language-learning project)"}
 
-# Kaikki's bulk Swedish-language dump (the whole site's download page is
-# https://kaikki.org/dictionary/Swedish/ -- the file below is linked from
-# its "Download raw JSONL data" section).
+# Kaikki's bulk Swedish-language dump. The whole site's download page is
+# https://kaikki.org/dictionary/Swedish/; the file below is linked from
+# its "Download raw JSONL data" section.
 DOWNLOADS = {
     "kaikki_swedish_raw.jsonl.gz": "https://kaikki.org/dictionary/Swedish/kaikki.org-dictionary-Swedish.jsonl.gz",
     "folkets_sv_en_public.xdxf": "https://folkets-lexikon.csc.kth.se/folkets/folkets_sv_en_public.xdxf",
@@ -30,7 +30,7 @@ DOWNLOADS = {
 
 # The Kelly list is gated behind a license click-through on Språkbanken's
 # site rather than a stable direct-download URL, so it can't be fetched
-# automatically -- download it by hand from the resource page and place the
+# automatically, so download it by hand from the resource page and place the
 # XML at sources/kelly_source.xml.
 MANUAL_DOWNLOADS = {
     "kelly_source.xml": "https://spraakbanken.gu.se/en/resources/kelly",

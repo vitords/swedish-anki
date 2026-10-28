@@ -28,7 +28,7 @@ def mustache_render(tmpl, fields, is_back):
 
     def render_type(m):
         # Real Anki only renders {{type:Field}} during an actual review
-        # session (not Preview/Browse -- which is exactly why this static
+        # session (not Preview/Browse, which is exactly why this static
         # renderer can't show it live either). Approximate: an empty input
         # on the front, a "correct answer" diff-style chip on the back, so
         # the page still communicates what studying it will look like.
@@ -90,11 +90,11 @@ def main():
             for theme_label, theme_class in [("Light", ""), ("Dark", "nightMode")]:
                 cards_html.append(
                     f'<div class="preview-card {theme_class}">'
-                    f'<div class="preview-label">{word} — {tmpl["name"]} — {theme_label} — FRONT</div>{front}</div>'
+                    f'<div class="preview-label">{word} · {tmpl["name"]} · {theme_label} · FRONT</div>{front}</div>'
                 )
                 cards_html.append(
                     f'<div class="preview-card {theme_class}">'
-                    f'<div class="preview-label">{word} — {tmpl["name"]} — {theme_label} — BACK</div>{back}</div>'
+                    f'<div class="preview-label">{word} · {tmpl["name"]} · {theme_label} · BACK</div>{back}</div>'
                 )
 
     page = f"""<!doctype html><html><head><meta charset="utf-8">
@@ -120,7 +120,7 @@ header p {{ font-size: 13px; color: var(--wrap-fg); opacity: .7; margin: 0; }}
 {css}
 </style></head><body>
 <header>
-  <h1>Swedish A1 deck — card template preview</h1>
+  <h1>Swedish A1 deck: card template preview</h1>
   <p>Real data through the actual genanki templates/CSS. Each set: Front then Back, Light then Dark.</p>
 </header>
 <div class="grid">{''.join(cards_html)}</div></body></html>"""

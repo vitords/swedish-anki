@@ -1,7 +1,7 @@
 # Swedish vocabulary Anki deck
 
 A Swedish vocabulary Anki deck built from curated, openly-licensed
-dictionary and corpus sources — not scraped translations dumped onto a
+dictionary and corpus sources, not scraped translations dumped onto a
 template, but a pipeline that actually picks the right sense of each word,
 pairs it with a matching example sentence, and ships it as clean,
 mobile-friendly Anki cards.
@@ -20,7 +20,7 @@ three card types each (recognition, cloze-sentence, production), audio on
 ## Why this exists
 
 Most "comprehensive" Swedish vocab decks floating around are frequency
-lists with a translation bolted on — no sense disambiguation (so a
+lists with a translation bolted on. No sense disambiguation, so a
 polysemous word's translation and example sentence can come from two
 completely unrelated meanings), no curation of which homonym you're actually
 looking at, and audio that often doesn't match the headword's actual
@@ -31,28 +31,30 @@ class of bug systematically, not just for one word at a time.
 
 One note type, three templates:
 
-- **Word card** — word + audio + gender/POS/CEFR badges, flip to see
+- **Word card**: word + audio + gender/POS/CEFR badges, flip to see
   translation, forms, IPA, and an example sentence.
-- **Cloze sentence** — a real example sentence with the word blanked out and
+- **Cloze sentence**: a real example sentence with the word blanked out and
   a typed-answer box, flip to see it filled in plus the translation and
   forms.
-- **Production** — translation shown, type the Swedish word from memory.
+- **Production**: translation shown, type the Swedish word from memory.
 
-See `style/templates.py` and `style/cards.css` for the actual templates —
-independent of everything else in this repo, see `CONTRIBUTING.md`.
+See [`style/templates.py`](style/templates.py) and
+[`style/cards.css`](style/cards.css) for the actual templates. For how this
+fits with everything else in this repo, see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Repo layout
 
 ```
-style/      card templates + CSS — how a card looks, nothing else
-tooling/    the extraction/build pipeline — how content gets picked and assembled
+style/      card templates + CSS: how a card looks, nothing else
+tooling/    the extraction/build pipeline: how content gets picked and assembled
 content/    the curated dataset itself: words, translations, examples, audio
-decks/      built .apkg output (gitignored — built locally, or grab a release)
+decks/      built .apkg output (gitignored, built locally, or grab a release)
 ```
 
-Each is meant to be reviewed independently — see `CONTRIBUTING.md` for what
-belongs where, and the licensing/sourcing behind `content/` in
-`ATTRIBUTION.md` and `LICENSE-CONTENT.md`.
+Each is meant to be reviewed independently. See [`CONTRIBUTING.md`](CONTRIBUTING.md)
+for what belongs where, and the licensing/sourcing behind
+[`content/`](content/) in [`ATTRIBUTION.md`](ATTRIBUTION.md) and
+[`LICENSE-CONTENT.md`](LICENSE-CONTENT.md).
 
 ## Building it yourself
 
@@ -69,18 +71,20 @@ python3 tooling/step4_build_deck.py A1
 ```
 
 Audio resolution also depends on a pre-existing local Lexin cache
-under `data/audio/` that isn't fetchable by a script yet — see the "Known
-gap" note in `CONTRIBUTING.md`. Without it you'll still get a working deck,
-just with less audio coverage until Wikimedia fallback fills some of the
-gap.
+under `data/audio/` that isn't fetchable by a script yet. See the "Known
+gap" note in [`CONTRIBUTING.md`](CONTRIBUTING.md). Without it you'll still
+get a working deck, just with less audio coverage until Wikimedia fallback
+fills some of the gap.
 
 ## Cutting a release
 
-`content/` already has everything `step4_build_deck.py` needs (curated data +
-audio), so a release build only runs that last step — no fetching or
+[`content/`](content/) already has everything
+[`step4_build_deck.py`](tooling/step4_build_deck.py) needs (curated data +
+audio), so a release build only runs that last step, no fetching or
 re-curation. Pushing a `v*` tag triggers
-`.github/workflows/release.yml`, which builds `decks/Swedish_A1.apkg` and
-attaches it to a new GitHub Release automatically:
+[`.github/workflows/release.yml`](.github/workflows/release.yml), which
+builds `decks/Swedish_A1.apkg` and attaches it to a new GitHub Release
+automatically:
 
 ```
 git tag v1.0.0
@@ -89,8 +93,8 @@ git push origin v1.0.0
 
 ## License
 
-- Code (`tooling/`, `style/`): MIT — `LICENSE`.
-- Curated dataset (`content/`): CC BY-SA 4.0 — `LICENSE-CONTENT.md`.
+- Code ([`tooling/`](tooling/), [`style/`](style/)): MIT, see [`LICENSE`](LICENSE).
+- Curated dataset ([`content/`](content/)): CC BY-SA 4.0, see [`LICENSE-CONTENT.md`](LICENSE-CONTENT.md).
 - Upstream sources and their individual licenses, including per-file
-  Wikimedia Commons audio attribution: `ATTRIBUTION.md` and
-  `ATTRIBUTION_AUDIO.md`.
+  Wikimedia Commons audio attribution: [`ATTRIBUTION.md`](ATTRIBUTION.md) and
+  [`ATTRIBUTION_AUDIO.md`](ATTRIBUTION_AUDIO.md).

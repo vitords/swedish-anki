@@ -3,15 +3,15 @@
 Step 4: Build the Anki deck (genanki) for one CEFR level.
 
 One note type, three card templates (per the approved plan):
-  1. Word card       -- recognition: word + audio + badges -> translation + forms + IPA
-  2. Cloze-sentence   -- context recall: example sentence with the word blanked,
+  1. Word card       : recognition: word + audio + badges -> translation + forms + IPA
+  2. Cloze-sentence   : context recall: example sentence with the word blanked,
                          typed-answer check -> full sentence + English translation
                          (only generated when we found a clean word-span to blank)
-  3. Production card -- English -> typed Swedish word -> word + audio + forms
+  3. Production card : English -> typed Swedish word -> word + audio + forms
 
 Design choices (see docs/plan): native Anki `[sound:...]` autoplay (not JS),
-one small neutral+accent CSS palette with explicit light/dark support, no giant
-hidden data-dump field -- CEFR/POS/gender become tags and one deck per level.
+one small neutral+accent CSS palette with explicit light/dark support, and no
+giant hidden data-dump field. CEFR/POS/gender become tags and one deck per level.
 
 Usage: python3 step4_build_deck.py A1 [--limit N]
 """
@@ -43,11 +43,11 @@ GENDER_LABEL = {"en": "en", "ett": "ett"}
 
 def word_display(word, pos, gender):
     """Nouns show their article inline ("en katt", "ett hus") on every card
-    face, not just as a separate badge on the Word card -- reinforces the
+    face, not just as a separate badge on the Word card. This reinforces the
     gender/article pairing everywhere, including the Cloze/Production back
     where the badge doesn't appear. The bare `Word` field (used for the
     typed-answer check and cloze/example matching) is left untouched, so this
-    is purely a display change -- typing "katt" still counts as correct."""
+    is purely a display change: typing "katt" still counts as correct."""
     if pos == "noun" and gender in GENDER_LABEL:
         return f"{GENDER_LABEL[gender]} {word}"
     return word
@@ -56,7 +56,7 @@ def word_display(word, pos, gender):
 def find_cloze_span(word, forms_str, example_sv):
     """Find the surface form of `word` inside `example_sv` (lemma or any known
     inflected form from the `forms` string), case-insensitively. Returns the
-    matched candidate's OWN casing (not the sentence's -- a sentence-initial
+    matched candidate's OWN casing (not the sentence's: a sentence-initial
     match like "Igar regnade det" would otherwise return "Igar" capitalized,
     which then becomes the typed-answer target and marks a learner's correctly
     lowercase "igar" as wrong) and its (start, end) span in example_sv, or
@@ -91,7 +91,7 @@ def find_cloze_span(word, forms_str, example_sv):
 
 def blank_and_highlight(word, forms_str, example_sv):
     """Blank/highlight every occurrence of the matched surface form, not just
-    the first -- a word that recurs in the sentence (e.g. "hjalp ... om
+    the first. A word that recurs in the sentence (e.g. "hjalp ... om
     hjalp") would otherwise still leak the answer in the supposedly-blanked
     text. Returns (blanked, highlighted, answer) with answer="" if no match."""
     matched, _ = find_cloze_span(word, forms_str, example_sv)
@@ -99,7 +99,7 @@ def blank_and_highlight(word, forms_str, example_sv):
         return "", example_sv, ""
 
     # Trailing-boundary-only (not a leading \b too) so this still finds a
-    # compound-fallback match like "trevlig" inside "supertrevlig" -- pass 1
+    # compound-fallback match like "trevlig" inside "supertrevlig". Pass 1
     # matches already satisfy the stricter double-boundary case anyway.
     pattern = r"\s+".join(re.escape(part) for part in matched.split()) + r"\b"
     spans = [m.span() for m in re.finditer(pattern, example_sv, re.IGNORECASE)]
@@ -111,7 +111,7 @@ def blank_and_highlight(word, forms_str, example_sv):
 
 
 def build_model():
-    """Field schema, templates, and CSS all live in style/templates.py -- this
+    """Field schema, templates, and CSS all live in style/templates.py; this
     function just assembles them into a genanki.Model. Editing how a card
     looks never requires touching this file."""
     return genanki.Model(
@@ -135,7 +135,7 @@ def main():
     # Kelly occasionally lists the same (word, pos, gender) twice under two
     # different kellyIDs pointing at two different SALDO senses (e.g. "krona"
     # once for the coin-heads idiom, once as a broader catch-all that also
-    # covers the currency sense) -- our picking only ever sees word/pos/
+    # covers the currency sense). Our picking only ever sees word/pos/
     # gender, so both rows resolve to the identical translation/example AND
     # the identical note guid (guid_for(word, pos, level)), which would
     # silently collide on import. Keep only the higher-frequency (lower
@@ -168,7 +168,7 @@ def main():
     for row in rows:
         audio_field = ""
         # Stage into a word+pos+rank-qualified basename rather than reusing
-        # the source file's own name -- several homonyms share a bare source
+        # the source file's own name. Several homonyms share a bare source
         # filename (e.g. "vara" the verb vs. "vara" the noun both resolve to
         # a source file literally named vara.mp3, from two different audio
         # directories). genanki's media_files are flattened into one folder
@@ -179,7 +179,7 @@ def main():
         ext = Path(row["audio_path"]).suffix if row["audio_path"] else ".mp3"
         staged_name = f"{row['word']}_{row['pos'].replace(' ', '_')}_{row['kelly_rank']}{ext}"
         # Prefer the already-published, git-tracked copy under content/audio/
-        # over the raw audio_path column -- that column points at the
+        # over the raw audio_path column. That column points at the
         # maintainer's local, gitignored scrape cache (data/audio/...), which
         # doesn't exist on a fresh checkout (e.g. CI). content/audio/ is the
         # actual source of truth for what ships; audio_path is only a resolver

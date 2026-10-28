@@ -1,75 +1,91 @@
 # Contributing
 
 This project is split into three independent areas. A PR or issue should
-point at exactly one of them — tell us which in the title or the matching
+point at exactly one of them. Tell us which in the title or the matching
 issue template.
 
-## `style/` — how a card looks
+## [`style/`](style/): how a card looks
 
-`style/templates.py` (the three card templates: Word, Cloze sentence,
-Production) and `style/cards.css`. Pure HTML/mustache + CSS, no Python logic
-and no data. If you want different colors, layout, dark-mode behavior, or
-which fields appear on which card face, this is the only place you need to
-touch. `tooling/step4_build_deck.py` just imports `FIELDS`/`TEMPLATES`/`CSS`
-from here and assembles the Anki model — it doesn't know or care what the
-templates actually look like.
+[`style/templates.py`](style/templates.py) (the three card templates: Word,
+Cloze sentence, Production) and [`style/cards.css`](style/cards.css). Pure
+HTML/mustache + CSS, no Python logic and no data. If you want different
+colors, layout, dark-mode behavior, or which fields appear on which card
+face, this is the only place you need to touch.
+[`tooling/step4_build_deck.py`](tooling/step4_build_deck.py) just imports
+`FIELDS`/`TEMPLATES`/`CSS` from here and assembles the Anki model; it
+doesn't know or care what the templates actually look like.
 
-## `tooling/` — how content gets extracted and built into a deck
+## [`tooling/`](tooling/): how content gets extracted and built into a deck
 
 The pipeline, run in order:
 
-1. `step1_kelly_spine.py` — parse the Kelly word list into the base spine
-   (word, POS, gender, CEFR level, frequency rank).
-2. `step2_kaikki_enrich.py` — match each word against the Kaikki/Wiktextract
-   Wiktionary dump: gloss, conjugation/declension forms, IPA, audio URL,
-   example sentence.
-3. `step3_translations_audio.py` — fill gaps from Folkets Lexikon and
-   resolve audio (Lexin local cache, falling back to Wikimedia).
-4. `step3b_apply_overrides.py` — apply `content/manual_overrides.csv`
+1. [`step1_kelly_spine.py`](tooling/step1_kelly_spine.py): parse the Kelly
+   word list into the base spine (word, POS, gender, CEFR level, frequency
+   rank).
+2. [`step2_kaikki_enrich.py`](tooling/step2_kaikki_enrich.py): match each
+   word against the Kaikki/Wiktextract Wiktionary dump: gloss,
+   conjugation/declension forms, IPA, audio URL, example sentence.
+3. [`step3_translations_audio.py`](tooling/step3_translations_audio.py):
+   fill gaps from Folkets Lexikon and resolve audio (Lexin local cache,
+   falling back to Wikimedia).
+4. [`step3b_apply_overrides.py`](tooling/step3b_apply_overrides.py): apply
+   [`content/manual_overrides.csv`](content/manual_overrides.csv)
    (hand-verified fixes for words the automated picking got wrong).
-5. `step3c_download_audio.py` — download the small number of Wikimedia
-   clips identified as gaps.
-6. `step3e_apply_examples.py` — fill any still-missing example sentences
-   from `content/manual_examples.csv`.
-7. `step4_build_deck.py` — build the actual `.apkg` for one CEFR level.
+5. [`step3c_download_audio.py`](tooling/step3c_download_audio.py): download
+   the small number of Wikimedia clips identified as gaps.
+6. [`step3e_apply_examples.py`](tooling/step3e_apply_examples.py): fill any
+   still-missing example sentences from
+   [`content/manual_examples.csv`](content/manual_examples.csv).
+7. [`step4_build_deck.py`](tooling/step4_build_deck.py): build the actual
+   `.apkg` for one CEFR level.
 
-Run `fetch_sources.py` first to pull the raw dumps into a local `sources/`
-directory (gitignored — see `ATTRIBUTION.md` for why these aren't committed).
-`build_attribution.py` regenerates `ATTRIBUTION_AUDIO.md` from whatever's
-currently in `content/kelly_final.csv`.
+Run [`fetch_sources.py`](tooling/fetch_sources.py) first to pull the raw
+dumps into a local `sources/` directory (gitignored; see
+[`ATTRIBUTION.md`](ATTRIBUTION.md) for why these aren't committed).
+[`build_attribution.py`](tooling/build_attribution.py) regenerates
+[`ATTRIBUTION_AUDIO.md`](ATTRIBUTION_AUDIO.md) from whatever's currently in
+[`content/kelly_final.csv`](content/kelly_final.csv).
 
-**Known gap**: `fetch_sources.py` only covers the 3 stable bulk downloads
-(Kelly, Kaikki, Folkets). Lexin audio still relies on a pre-existing local
-cache under `data/audio/` that isn't scriptable yet — turning that into
-real, runnable scraping tooling is an open contribution opportunity.
+**Known gap**: [`fetch_sources.py`](tooling/fetch_sources.py) only covers
+the 3 stable bulk downloads (Kelly, Kaikki, Folkets). Lexin audio still
+relies on a pre-existing local cache under `data/audio/` that isn't
+scriptable yet. Turning that into real, runnable scraping tooling is an
+open contribution opportunity.
 
 If you're fixing a bug in how a word/sense gets picked (translation picked
 from the wrong sense, audio resolved to the wrong word, cloze-blanking
 missing a form), it's almost always a tooling change here, verified by
 re-running the pipeline and checking the specific word's row in
-`content/kelly_final.csv`.
+[`content/kelly_final.csv`](content/kelly_final.csv).
 
-## `content/` — the actual words, translations, examples, audio
+## [`content/`](content/): the actual words, translations, examples, audio
 
-`content/kelly_final.csv` is the curated output of the pipeline above.
-`content/manual_overrides.csv` and `content/manual_examples.csv` are
+[`content/kelly_final.csv`](content/kelly_final.csv) is the curated output
+of the pipeline above.
+[`content/manual_overrides.csv`](content/manual_overrides.csv) and
+[`content/manual_examples.csv`](content/manual_examples.csv) are
 hand-written fixes layered on top for specific words the automated picking
-got wrong or simply had nothing for — these two files are themselves
+got wrong or simply had nothing for. These two files are themselves
 reviewable, hand-editable content, not generated output.
 
 If you spot a wrong translation, a confusing example sentence, a sense
 mismatch (e.g. the wrong homonym), or missing audio, the fix usually belongs
-in `manual_overrides.csv` or `manual_examples.csv` (see the existing rows for
-the expected format and the kind of justification note each row carries),
-not a direct edit to `kelly_final.csv` — that file gets regenerated by the
-pipeline and a direct edit would just be overwritten.
+in [`manual_overrides.csv`](content/manual_overrides.csv) or
+[`manual_examples.csv`](content/manual_examples.csv) (see the existing rows
+for the expected format and the kind of justification note each row
+carries), not a direct edit to
+[`kelly_final.csv`](content/kelly_final.csv), since that file gets
+regenerated by the pipeline and a direct edit would just be overwritten.
 
-`content/` is licensed CC BY-SA 4.0 (`LICENSE-CONTENT.md`) and draws on
-several upstream sources, each credited in `ATTRIBUTION.md` — if you're
+[`content/`](content/) is licensed CC BY-SA 4.0
+([`LICENSE-CONTENT.md`](LICENSE-CONTENT.md)) and draws on several upstream
+sources, each credited in [`ATTRIBUTION.md`](ATTRIBUTION.md). If you're
 adding a new source, add it there too, including its confirmed (not
 assumed) license.
 
 ## Issue templates
 
-Use `.github/ISSUE_TEMPLATE/style-issue.md`, `content-issue.md`, or
-`tooling-issue.md` depending on which area your report concerns.
+Use [`style-issue.md`](.github/ISSUE_TEMPLATE/style-issue.md),
+[`content-issue.md`](.github/ISSUE_TEMPLATE/content-issue.md), or
+[`tooling-issue.md`](.github/ISSUE_TEMPLATE/tooling-issue.md) depending on
+which area your report concerns.

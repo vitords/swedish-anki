@@ -39,8 +39,8 @@ POS_TO_KAIKKI = {
 
 BAD_SENSE_TAGS = {
     "obsolete", "archaic", "rare", "dated", "vulgar", "offensive", "derogatory",
-    "form-of",  # e.g. "comparative degree of bra", "imperative of soka" -- a
-                # grammatical cross-reference, not a translation
+    "form-of",  # e.g. "comparative degree of bra", "imperative of soka":
+                # a grammatical cross-reference, not a translation
 }
 
 # Backstop for pick_gloss()'s tag-agnostic fallback pass: catches the same
@@ -86,7 +86,7 @@ def stream_kaikki_entries(target_words):
 def _entry_gender(entry):
     """'en' (common gender, Kaikki tag 'c') or 'ett' (neuter, tag 'n'), or ''
     if not a noun / not stated. Swedish has real noun homonyms that differ
-    ONLY by gender (e.g. "val" c = a whale, "val" n = a choice/election) --
+    ONLY by gender (e.g. "val" c = a whale, "val" n = a choice/election).
     Kaikki gives each its own etymology entry, so this is the only reliable
     way to tell them apart."""
     for tmpl in entry.get("head_templates", []):
@@ -105,7 +105,7 @@ def pick_entry(entries, pos, gender=None):
     if not candidates:
         return None
 
-    # Kelly already tells us the gender for nouns -- when several homonym
+    # Kelly already tells us the gender for nouns. When several homonym
     # entries exist (different etymologies), narrow to the one(s) Kaikki
     # tags with the SAME gender before ranking by etymology/richness, so we
     # don't silently pick a same-spelled, different-gender, different-word
@@ -116,10 +116,10 @@ def pick_entry(entries, pos, gender=None):
             candidates = gender_matched
 
     # Prefer the lowest etymology number first (etymology 1 / unnumbered is the
-    # primary, more basic word -- a homonym with MORE senses listed under a later
+    # primary, more basic word). A homonym with MORE senses listed under a later
     # etymology is often a rarer word, e.g. "resa" etym 1 = "to travel" (1 sense),
-    # etym 2 = "to raise/erect" (3 senses) -- richness alone would wrongly pick
-    # the rarer one). Only fall back to richness within the same etymology group.
+    # etym 2 = "to raise/erect" (3 senses), so richness alone would wrongly pick
+    # the rarer one. Only fall back to richness within the same etymology group.
     min_etym = min(e.get("etymology_number", 1) for e in candidates)
     top = [e for e in candidates if e.get("etymology_number", 1) == min_etym]
 
@@ -143,7 +143,7 @@ def _sense_example(sense):
     for ex in sense.get("examples", []):
         # Wiktextract tags attributed literary/historical/legal citations as
         # type "quotation" (with a "ref") rather than a plain invented
-        # "example" -- these skew archaic, dialectal, or otherwise unsuitable
+        # "example". These skew archaic, dialectal, or otherwise unsuitable
         # for a learner (old spelling, parliamentary speeches, song lyrics),
         # so only take clean made-up examples.
         if ex.get("type") == "quotation" or ex.get("ref"):
@@ -157,7 +157,7 @@ def _sense_example(sense):
 
 def pick_gloss_and_example(entry):
     """Pick the gloss AND its example from the SAME sense, not two separate
-    passes -- a word like "slag" (noun) has ~10 senses ("a hit", "a battle",
+    passes. A word like "slag" (noun) has ~10 senses ("a hit", "a battle",
     "a kind/sort", "a while", ...), and picking the gloss from whichever
     sense ranks first while independently picking the example from whichever
     OTHER sense happens to have one produces a card whose translation and
@@ -224,7 +224,7 @@ def build_forms_string(entry, pos):
         return " • ".join(parts)
     if pos == "adjective":
         # Agreement forms (neuter "-t", plural/definite "-a") are a distinct
-        # axis from comparative/superlative -- e.g. "demokratisk" needs both
+        # axis from comparative/superlative: "demokratisk" needs both
         # "demokratiskt" and "demokratiska" to match "de demokratiska
         # spelreglerna" for cloze-blanking, not just "mer/mest demokratisk".
         neuter = form_lookup(entry, [["indefinite", "neuter", "positive", "singular"]], source="declension")

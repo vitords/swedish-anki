@@ -53,7 +53,7 @@ Thumbs.db
 # Project specific
 
 # Raw upstream dumps + scrape caches, fetched locally by tooling/fetch_sources.py
-# (or the pre-existing audio cache -- see CONTRIBUTING.md's "known gap" note).
+# (or the pre-existing audio cache; see CONTRIBUTING.md's "known gap" note).
 # Multi-GB, never meant to be committed; only content/kelly_final.csv +
 # content/manual_*.csv + the subset of audio actually used (content/audio/)
 # are the published dataset.
@@ -61,7 +61,7 @@ data/
 sources/
 discovery/
 
-# Build output -- regenerated from tooling/ + content/, not committed.
+# Build output, regenerated from tooling/ + content/, not committed.
 build/
 decks/
 *.apkg

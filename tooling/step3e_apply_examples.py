@@ -6,7 +6,7 @@ Kaikki nor Folkets had a real one.
 That gap isn't random: both sources are far more likely to carry an example
 for an idiomatic or "harder" word than for a simple, extremely common one
 (cardinal/ordinal numbers, month names, country names, everyday nouns like
-"far"/"dator") -- editors don't bother exemplifying "five" or "January". For
+"far"/"dator"); editors don't bother exemplifying "five" or "January". For
 the A1 top-1000 batch that gap concentrated in exactly the highest-value
 words (kelly_rank 2-86 is almost entirely numerals, months, and country
 names), so it's worth a direct, hand-written fix rather than a fancier
